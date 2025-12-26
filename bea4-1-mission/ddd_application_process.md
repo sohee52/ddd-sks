@@ -333,3 +333,10 @@ void update(PostMember m)    // 불가능
 - [MemberDataInit](after\13_separate_datainit\MemberDataInit.java)
 - [PostDataInit](after\13_separate_datainit\PostDataInit.java)
 
+주의할 점
+- MemberDataInit이 PostDataInit보다 먼저 실행되어야 함
+- PostDataInit에서 PostMember를 생성할 때, Member가 이미 존재해야 하기 때문
+- 이를 위해 스프링 빈 설정에서 MemberDataInit을 먼저 등록함
+- [MemberDataInit](after\13_separate_datainit\MemberDataInit.java) → `@Order(1)`
+- [PostDataInit](after\13_separate_datainit\PostDataInit.java) → `@Order(2)`
+
